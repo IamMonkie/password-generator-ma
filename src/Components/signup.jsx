@@ -3,23 +3,28 @@ import { auth } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { Form, Button, Alert, Container } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../Hooks/AuthContext";
 
 //export default function Signup() {
 const Signup = () => {
   console.log("Signup component rendered");
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  //const { signup } = useAuth();
+  const { signup } = useAuth();
   const [error, setError] = useState("");
-  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const email = emailRef.current.value; // Access email input value
     const password = passwordRef.current.value; // Access password imput value
     const passwordConfirm = passwordRef.current.value;
+
+    //Signup(email, password);
 
     if (password !== passwordConfirm) {
       return setError("Passwords do not match");
@@ -28,7 +33,7 @@ const Signup = () => {
     try {
       setError();
       setLoading(true);
-      await createUserWithEmailAndPassword(auth, email, password);
+      await signup(email, password);
       navigate("/login"); //Redirect to login page after signup success
     } catch {
       setError("Failed to create an account. Please try again.");

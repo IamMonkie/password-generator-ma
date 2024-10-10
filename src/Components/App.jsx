@@ -40,6 +40,15 @@ const App = () => {
   */
   return (
     /* --------------------------------- testing -------------------------------- */
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Signup />
+      </div>
+    </Container>
+    /*
     <Container className="mt-5">
       <h2>Welcome to the App</h2>
       <Button variant="secondary" onClick={() => navigate("/Login")}>
@@ -52,6 +61,7 @@ const App = () => {
         Logout
       </Button>
     </Container>
+    */
     /* -------------------------------------------------------------------------- */
   );
 };
