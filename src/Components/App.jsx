@@ -44,8 +44,13 @@ const App = () => {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Signup />
+      <div className="w-100" style={{ maxWidth: "300px" }}>
+        <img
+          src="/src/assets/images/MORRIS thermal world logo blue.png"
+          loading="lazy"
+          style={{ maxWidth: "300px" }}
+        />
+        <Login />
       </div>
     </Container>
     /*
