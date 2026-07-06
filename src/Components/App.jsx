@@ -1,73 +1,51 @@
 import React from "react";
-import { useState } from "react";
-import Signup from "./Signup";
-import Login from "./Login";
+//import { useState } from "react";
+//import Signup from "./Signup";
+//import Login from "./Login";
 import { Container } from "react-bootstrap";
-import { AuthProvider } from "../Hooks/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
-/* --------------------------------- testing -------------------------------- */
+/* --------------------------------- Import -------------------------------- */
+import Login from "./Login";
+import MA_Today from "./MA_Today";
+
+/* -------------------------------------------------------------------------- */
+
+/* ---------------------------------- Style --------------------------------- */
+const containerStyle = {
+  minHeight: "100vh",
+};
+
+const appContentStyle = {
+  width: "100%",
+  maxWidth: "500px",
+};
+/* -------------------------------------------------------------------------- */
+
 const App = () => {
   console.log("App component rendered");
-  const navigate = useNavigate();
 
+  /*
   const handleLogout = () => {
     // Log out the user (implement Firebase auth signOut here)
   };
+  */
 
-  /* -------------------------------------------------------------------------- */
-
-  /*
-  function App() {
-    return (
-    <AuthProvider>
+  return (
+    <Router>
       <Container
-        className="d-flex align-items-center justify-content-center"
-        style={{ minHeight: "100vh" }}
+        className="appContainer d-flex align-items-center justify-content-center"
+        style={containerStyle}
       >
-        <div className="w-100" style={{ maxWidth: "400px" }}>
-          <Router>
-            <Switch>
-              <Route path="./Signup.jsx" component={Signup} />
-              <Route path="./Login.jsx" component={Login} />
-            </Switch>
-          </Router>
+        <div className="appContent" style={appContentStyle}>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/today" element={<MA_Today />} />
+          </Routes>
         </div>
       </Container>
-    </AuthProvider>
-  );
-  */
-  return (
-    /* --------------------------------- testing -------------------------------- */
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
-    >
-      <div className="w-100" style={{ maxWidth: "300px" }}>
-        <img
-          src="/src/assets/images/MORRIS thermal world logo blue.png"
-          loading="lazy"
-          style={{ maxWidth: "300px" }}
-        />
-        <Login />
-      </div>
-    </Container>
-    /*
-    <Container className="mt-5">
-      <h2>Welcome to the App</h2>
-      <Button variant="secondary" onClick={() => navigate("/Login")}>
-        Go to Login
-      </Button>
-      <Button variant="primary" onClick={() => navigate("/Signup")}>
-        Request Access
-      </Button>
-      <Button variant="danger" onClick={handleLogout}>
-        Logout
-      </Button>
-    </Container>
-    */
-    /* -------------------------------------------------------------------------- */
+    </Router>
   );
 };
 export default App;
