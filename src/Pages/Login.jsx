@@ -1,14 +1,23 @@
 import React, { useRef, useState } from "react";
-import logo from "../Assets/images/MORRIS thermal world logo blue.png";
+import logoLight from "../Assets/images/MORRIS thermal world logo blue.png";
+import logoDark from "../Assets/images/MORRIS thermal world logo white.png";
 import { Container, Form, Button, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 /* ---------------------------------- Style --------------------------------- */
+const logoStyle = {
+  width: "400px",
+  height: "auto",
+  marginBottom: "60px",
+};
+
 const loginStyle = {
   textAlign: "center",
 };
+
 const formStyle = {
   marginTop: "10px",
+  textAlign: "left",
 };
 
 const buttonStyle = {
@@ -18,10 +27,11 @@ const buttonStyle = {
 const passwordStyle = {
   marginTop: "10px",
 };
+
 /* -------------------------------------------------------------------------- */
 
 //export default function Login() {
-const Login = () => {
+const Login = ({ darkMode }) => {
   console.log("Login component rendered");
 
   const emailRef = useRef();
@@ -61,6 +71,7 @@ const Login = () => {
 
       navigate("/today");
     } catch (err) {
+      console.error(err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -68,14 +79,17 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <img src={logo} alt="Logo" style={{ width: "200px", height: "auto" }} />
-
+    <div style={loginStyle}>
       <Container className="mt-5">
-        <h2 className="text-center mb-4">Log In</h2>
+        <img
+          src={darkMode ? logoDark : logoLight}
+          alt="Morris Logo"
+          style={logoStyle}
+        />
+        <h2 className="mb-4">Log In</h2>
         {error && <Alert variant="danger">{error}</Alert>}
 
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} style={formStyle}>
           <Form.Group id="email">
             <Form.Label>Email</Form.Label>
             <Form.Control

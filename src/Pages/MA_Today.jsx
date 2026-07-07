@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 /* ---------------------------------- Style --------------------------------- */
 const maTodayStyle = {
@@ -9,6 +10,7 @@ const maTodayStyle = {
 const logoutButtonStyle = {
   marginTop: "2rem",
 };
+
 /* -------------------------------------------------------------------------- */
 
 //export default function MA_Today() {
@@ -39,13 +41,14 @@ const MA_Today = () => {
         Today's Date: {month}/{day}/{year}
       </p>
 
-      <button
-        className="logoutButton"
+      <Button
+        className="w-20"
+        variant="primary"
         onClick={handleLogout}
         style={logoutButtonStyle}
       >
         Logout
-      </button>
+      </Button>
     </div>
   );
 };
